@@ -1,0 +1,58 @@
+{
+  "name": "@hello-steven/astro-fastify",
+  "version": "0.1.0",
+  "description": "Astro adapter for Fastify on Node.js",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hello-steven/astro-fastify.git"
+  },
+  "homepage": "https://github.com/hello-steven/astro-fastify#readme",
+  "bugs": {
+    "url": "https://github.com/hello-steven/astro-fastify/issues"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "keywords": [
+    "astro-adapter",
+    "astro",
+    "fastify"
+  ],
+  "exports": {
+    ".": "./src/integration.mjs",
+    "./server": "./src/server.mjs",
+    "./preview": "./src/preview.mjs",
+    "./fastify-server": "./src/fastify-server.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:build": "astro build --root test/fixture",
+    "build:basic": "astro build --root examples/basic",
+    "build:access-logging": "astro build --root examples/access-logging",
+    "build:runtime-config": "astro build --root examples/runtime-config",
+    "build:cluster-workers": "astro build --root examples/cluster-workers",
+    "test:smoke": "node test/smoke.mjs",
+    "pack:check": "npm pack --dry-run"
+  },
+  "peerDependencies": {
+    "astro": "^7.0.0"
+  },
+  "dependencies": {
+    "@fastify/compress": "^9.2.0",
+    "@fastify/static": "^10.1.5",
+    "fastify": "^5.12.5"
+  },
+  "devDependencies": {
+    "@prometheus-io/client": "^0.16.1",
+    "pino": "^10.3.1",
+    "pino-pretty": "^13.1.3"
+  }
+}

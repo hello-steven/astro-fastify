@@ -1,0 +1,23 @@
+---
+import { getSecret } from "astro:env/server";
+
+const greeting = getSecret("GREETING") ?? "Hello";
+---
+<html>
+  <head>
+    <script
+      define:vars={{ BROWSER_GREETING: getSecret("BROWSER_GREETING") ?? "Hello" }}
+      is:inline
+    >
+      window._env_ = { BROWSER_GREETING };
+    </script>
+  </head>
+  <body>
+    <h1>{greeting} from Fastify</h1>
+    <p id="browser-greeting">Loading browser greeting…</p>
+    <script>
+      const element = document.getElementById("browser-greeting");
+      if (element) element.textContent = `${window._env_.BROWSER_GREETING} from the browser`;
+    </script>
+  </body>
+</html>
